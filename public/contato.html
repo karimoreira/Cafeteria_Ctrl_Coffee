@@ -1,0 +1,62 @@
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ctrl+Coffee - Contato</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
+  <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/3047/3047925.png" type="image/png">
+  <link rel="stylesheet" href="/ctrl-coffee/public/css/style.css" />
+  <style>
+
+  </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+          <div class="logo">
+            <img src="/ctrl-coffee/public/img/coffee-icone.png" alt="Ctrl+Coffee" />
+          </div>
+          <nav>
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="menu.html">Menu</a></li>
+              <li><a href="contato.html">Contato</a></li>
+              <li>
+                <a href="carrinho.html">
+                  🛒 <span id="cart-count">0</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+
+  <section class="section">
+    <h2 style="text-align: center;">Fale Conosco</h2>
+    <p style="text-align: center; margin-bottom: 2rem;">Tem alguma dúvida, sugestão ou deseja fazer um pedido especial? Envie sua mensagem e retornaremos em breve!</p>
+
+    <div class="contact-container">
+        <div class="contact-image">
+            <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=700&q=80" alt="Café na xícara com plantas ao fundo" />
+          </div>
+      <form class="contact-form" id="contact-form">
+        <label for="nome">Seu nome</label>
+        <input type="text" id="nome" name="nome" required>
+
+        <label for="email">Seu e-mail</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="mensagem">Sua mensagem</label>
+        <textarea id="mensagem" name="mensagem" rows="6" required></textarea>
+
+        <button type="submit" class="default-btn">Enviar Mensagem</button>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Ctrl+Coffee. Todos os direitos reservados. </p>
+  </footer>
+  <script src="js/index.js"></script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Seu Carrinho - Ctrl+Coffee</title>
+  <link rel="stylesheet" href="/ctrl-coffee/public/css/style.css" />
+</head>
+<body class="page-min-height">
+  <header>
+    <div class="container">
+      <div class="logo">
+        <img src="/ctrl-coffee/public/img/coffee-icone.png" alt="Ctrl+Coffee" />
+      </div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="menu.html">Menu</a></li>
+          <li><a href="contato.html">Contato</a></li>
+          <li>
+            <a href="carrinho.html">
+              🛒 <span id="cart-count">0</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+<main> 
+  <section class="section">
+    <h2>Seu Carrinho</h2>
+    <div class="cart-grid">
+      <div id="cart-items" class="cart-list"></div>
+      <div class="cart-summary">
+        <h3>Resumo da compra</h3>
+        <div class="summary-line">
+          <span>Sub-total</span>
+          <span id="subtotal">R$ 0,00</span>
+        </div>
+        <div class="summary-line">
+          <span>Frete</span>
+          <span>Gratuito</span>
+        </div>
+        <div class="summary-line">
+          <span><strong>Total</strong></span>
+          <span id="total-price"><strong>R$ 0,00</strong></span>
+        </div>
+        <button class="default-btn" onclick="window.location.href='finalizar.html'">Finalizar Compra</button>
+        <button class="default-btn" onclick="limparCarrinho()" style="margin-top: 10px; background: #d55;">Esvaziar Carrinho</button>
+      </div>
+    </div>
+  </section>
+</main>
+  <footer>
+    <p>&copy; 2025 Ctrl+Coffee. Todos os direitos reservados.</p>
+  </footer>
+  <script src="js/index.js"></script>
+</body>
+</html>

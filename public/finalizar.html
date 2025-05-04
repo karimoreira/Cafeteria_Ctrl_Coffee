@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Finalizar Pedido - Ctrl+Coffee</title>
+  <link rel="stylesheet" href="/ctrl-coffee/public/css/style.css" />
+</head>
+<body class="page-min-height">
+  <header>
+    <div class="container">
+      <div class="logo">
+        <img src="/ctrl-coffee/public/img/coffee-icone.png" alt="Ctrl+Coffee" />
+      </div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="menu.html">Menu</a></li>
+          <li><a href="contato.html">Contato</a></li>
+          <li><a href="carrinho.html">🛒 <span id="cart-count">0</span></a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="section">
+      <h2>Finalizar Pedido</h2>
+      <div class="checkout-container">
+        <form id="checkout-form" class="checkout-form">
+          <label for="nome">Nome completo</label>
+          <input type="text" id="nome" name="nome" required>
+
+          <label for="email">E-mail</label>
+          <input type="email" id="email" name="email" required>
+
+          <label for="endereco">Endereço de entrega</label>
+          <input type="text" id="endereco" name="endereco" required>
+
+          <label for="pagamento">Forma de pagamento</label>
+          <select id="pagamento" name="pagamento" required>
+            <option value="">Selecione</option>
+            <option value="pix">PIX</option>
+            <option value="cartao">Cartão de Crédito</option>
+            <option value="boleto">Boleto</option>
+          </select>
+
+          <button type="submit" class="default-btn">Confirmar Pedido</button>
+        </form>
+
+        <div class="checkout-summary">
+          <h3>Resumo do Pedido</h3>
+          <div id="checkout-items"></div>
+          <p class="summary-line"><strong>Total:</strong> <span id="checkout-total">R$ 0,00</span></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Ctrl+Coffee. Todos os direitos reservados.</p>
+  </footer>
+
+  <script src="js/index.js"></script>
+  <script>
+    // Preenche resumo do pedido
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const itemsEl = document.getElementById('checkout-items');
+    const totalEl = document.getElementById('checkout-total');
+    let total = 0;
+
+    if (cart.length === 0) {
+      itemsEl.innerHTML = '<p>Seu carrinho está vazio.</p>';
+    } else {
+      cart.forEach(item => {
+        total += item.price;
+        const p = document.createElement('p');
+        p.textContent = `${item.name} - R$ ${item.price.toFixed(2)}`;
+        itemsEl.appendChild(p);
+      });
+    }
+    totalEl.textContent = `R$ ${total.toFixed(2)}`;
+
+    // Submissão do pedido
+    document.getElementById('checkout-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('Pedido confirmado! Em breve entraremos em contato.');
+      localStorage.removeItem('cart');
+      window.location.href = 'index.html';
+    });
+
+    updateCartCount(); // mantém o contador atualizado
+  </script>
+</body>
+</html>
