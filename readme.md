@@ -2,20 +2,22 @@
 
 Projeto completo de uma cafeteria fictícia, desenvolvido com foco em uma experiência funcional e intuitiva. Inclui vitrine de cafés, carrinho de compras, formulário para solicitação do pedido, finalização de pedido por e-mail e um formulário para contato.
 
----
 
 ## Tecnologias Utilizadas
 
 - HTML5 
 - CSS3
 - JavaScript 
-- Node.js + Express  
+- Node.js + express.js
 - Nodemailer    
 - Unsplash 
 
----
+## Sobre imagens
 
-## Funcionalidades Implementadas
+- Todas as imagens utilizadas foram obtidas no Unsplash e são de uso livre.
+- link: [Unsplash](https://unsplash.com/pt-br)
+
+## Funcionalidades Implementadas:
 
 ### Página Home 
 
@@ -27,7 +29,6 @@ Projeto completo de uma cafeteria fictícia, desenvolvido com foco em uma experi
   - Preço
   - Botão Comprar
 
----
 
 ### Página Menu
 
@@ -39,7 +40,6 @@ Projeto completo de uma cafeteria fictícia, desenvolvido com foco em uma experi
   - Preço
   - Botão Comprar
 
----
 
 ### Responsividade
 
@@ -48,7 +48,6 @@ Projeto completo de uma cafeteria fictícia, desenvolvido com foco em uma experi
   - Carrinho aparece ao lado do ícone de menu
 - Media queries otimizadas para consistência
 
----
 
 ### Carrinho de compras
 
@@ -59,7 +58,6 @@ Projeto completo de uma cafeteria fictícia, desenvolvido com foco em uma experi
   - Esvaziar carrinho com modal de confirmação
   - Finalizar compra redireciona para página de finalização
 
----
 
 ### Finalização de pedido 
 
@@ -75,7 +73,6 @@ Projeto completo de uma cafeteria fictícia, desenvolvido com foco em uma experi
 - Modais durante o processamento
 - Sucesso e erro
 
----
 
 ### Página Fale Conosco - Formulário de Contato 
 
@@ -87,27 +84,31 @@ Projeto completo de uma cafeteria fictícia, desenvolvido com foco em uma experi
 - Envio assíncrono via fetch para o backend
 - Modal de carregamento + sucesso/erro
 
+
+## Organização e Reutilização de Estilos
+
+- Defini as variáveis de cores globais utilizando CSS custom properties, pois idealizei desde o início que grande parte dos componentes teriam a mesma paleta de cores, então adicionei ao :root. Facilita a manutenção e dá uma aparência armonica
+
 ---
 
 ## Backend 
-
+ 
 - Criado com express.js
 - Rota POST /finalizar-pedido:
-  - Recebe os dados do pedido
+  - Recebe os dados do pedido enviados via formulário do frontend
   - Envia e-mail formatado com:
     - Nome, endereço, forma de pagamento
     - Troco (se aplicável)
     - Resumo dos cafés
+  - Retorna status de sucesso ou erro para o frontend
 - Rota POST /enviar-contato:
   - Recebe a mensagem e envia para o e-mail da loja
     - Nodemailer
 - Variáveis sensíveis (e-mail e senha gerada para o app) via .env
+- Frontend exibe modais durante o processamento e responde ao status (sucesso ou erro)
 
 ---
 
-## Imagens
 
-- Todas as imagens foram buscadas no Unsplash, são públicas.
-- Ajuste para performance
-- Cada café tem imagem exclusiva e coerente com seu nome
+
 

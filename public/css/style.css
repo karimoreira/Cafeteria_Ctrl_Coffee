@@ -5,6 +5,9 @@
     --text-dark: #2f2f2f;
     --text-light: #777;
     --white: #fff;
+
+    --slider-btn-bg: #fffaf5;
+    --slider-btn-hover: #f3e1d9;
   }
   
   * {
@@ -87,13 +90,44 @@
     font-weight: 600;
     margin-bottom: 10px;
   }
-  
-  .slider p {
-    font-size: 1.2rem;
-    margin-bottom: 20px;
-    font-weight: 300;
+
+  @media (max-width: 720px) {
+    .slider h1 {
+      font-size: 38px;
+    }
   }
   
+  .slider p {
+    font-size: 25px;
+    margin-bottom: 20px;
+    font-weight: 600;
+  }
+
+  @media (max-width: 720px) {
+    .slider p {
+      font-size: 18px;
+    }
+  }
+
+  .default-btn-slider{
+    background: var(--slider-btn-bg);
+    color: var(--primary);
+    border-radius: 8px;
+    padding: 14px 30px;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    text-decoration: none;
+    transition: 0.3s;
+    display: inline-block;
+  }
+  
+  .default-btn-slider:hover {
+    background: var(--slider-btn-hover);
+    color: var(--text-dark);
+  }
+
   .default-btn {
     background: var(--primary);
     color: white;
@@ -287,7 +321,6 @@
 .cart-item span {
   font-weight: bold;
   color: var(--primary);
-  margin-right: 15px;
 }
 
 .cart-item button {
@@ -380,13 +413,6 @@ button.default-btn {
   margin-bottom: 6px;
 }
 
-.cart-item button {
-  background: none;
-  border: none;
-  color: #d55;
-  font-weight: 500;
-  cursor: pointer;
-}
 
 .cart-summary {
   background: var(--bg);
@@ -556,6 +582,7 @@ body.page-min-height {
     align-items: center;
   }
 
+
   nav ul {
     display: none;
     flex-direction: column;
@@ -605,4 +632,5 @@ body.page-min-height {
     top: 93px;
   }
 }
+
 
