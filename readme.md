@@ -16,7 +16,7 @@ Acesse o projeto online em:
 
 </div>
 
-### versão desktop
+
 
 <div align="center">
 
