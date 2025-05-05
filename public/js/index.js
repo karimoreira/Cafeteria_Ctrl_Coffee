@@ -1,3 +1,93 @@
+//renderizar carrinho
+function renderCartItems() {
+  const cart = JSON.parse(localStorage.getItem('cart')) || [];
+  const cartMap = {};
+
+  
+  cart.forEach(item => {
+    if (cartMap[item.name]) {
+      cartMap[item.name].quantity += 1;
+    } else {
+      cartMap[item.name] = { ...item, quantity: 1 };
+    }
+  });
+
+  const groupedItems = Object.values(cartMap);
+  const container = document.getElementById('cart-items');
+  container.innerHTML = '';
+
+  groupedItems.forEach(item => {
+    const div = document.createElement('div');
+    div.className = 'cart-item';
+    div.innerHTML = `
+      <img src="${item.img}" alt="${item.name}">
+      <div class="info">
+        <strong>${item.name}</strong>
+      </div>
+      <div class="right">
+        <div class="quantity-controls">
+          <button onclick="changeQuantity('${item.name}', -1)">−</button>
+          <span>${item.quantity}</span>
+          <button onclick="changeQuantity('${item.name}', 1)">+</button>
+        </div>
+        <span>R$ ${(item.price * item.quantity).toFixed(2)}</span>
+        <button onclick="removeAll('${item.name}')">Remover</button>
+      </div>
+    `;
+    container.appendChild(div);
+  });
+
+  const total = groupedItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
+  document.getElementById('subtotal').textContent = `R$ ${total.toFixed(2)}`;
+  document.getElementById('total-price').innerHTML = `<strong>R$ ${total.toFixed(2)}</strong>`;
+}
+
+//alterar a quantidade
+function changeQuantity(name, delta) {
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+  const index = cart.findIndex(item => item.name === name);
+  if (index === -1) return;
+
+  if (delta > 0) {
+    
+    cart.push(cart[index]);
+  } else {
+    
+    const itemIndex = cart.findIndex(item => item.name === name);
+    if (itemIndex !== -1) {
+      cart.splice(itemIndex, 1);
+    }
+  }
+
+  localStorage.setItem('cart', JSON.stringify(cart));
+  renderCartItems();
+  updateCartCount();
+}
+
+
+//remover
+function removeAll(name) {
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
+  cart = cart.filter(item => item.name !== name);
+  localStorage.setItem('cart', JSON.stringify(cart));
+  renderCartItems();
+  updateCartCount();
+}
+
+
+function removeItem(name) {
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
+  const index = cart.findIndex(item => item.name === name);
+
+  if (index !== -1) {
+    cart.splice(index, 1); 
+    localStorage.setItem('cart', JSON.stringify(cart));
+    renderCartItems();
+    updateCartCount();
+  }
+}
+
 // formulário para a página contato
 const form = document.getElementById('contact-form');
 
@@ -157,10 +247,9 @@ function limparCarrinho() {
   updateCartCount();
 }
 
-
-// renderizar
+//botões carrinho
 if (document.getElementById('cart-items')) {
-  renderCart();
+  renderCartItems(); 
 }
 
 // resumo do pedido
@@ -230,7 +319,7 @@ if (checkoutForm) {
   });
 }
 
-// modal Finalizar Compra quando não houver itens no carrinho 
+// modal finalizar compra quando não houver itens no carrinho 
 const finalizarBtn = document.getElementById('btn-finalizar');
 if (finalizarBtn) {
   finalizarBtn.addEventListener('click', function () {
@@ -243,7 +332,7 @@ if (finalizarBtn) {
   });
 }
 
-// modal Esvaziar Carrinho quando não houver itens no carrinho 
+// modal esvaziar carrrinho quando não houver itens 
 const limparBtn = document.getElementById('btn-limpar');
 if (limparBtn) {
   limparBtn.addEventListener('click', function () {

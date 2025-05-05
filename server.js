@@ -51,15 +51,32 @@ app.post('/finalizar-pedido', async (req, res) => {
   const { nome, email, endereco, pagamento, troco, carrinho } = req.body;
 
   let total = 0;
-  const htmlCarrinho = carrinho.map(item => {
-    total += item.price;
-    return `
-      <tr>
-        <td style="padding: 8px 12px; border-bottom: 1px solid #eee;">${item.name}</td>
-        <td style="padding: 8px 12px; border-bottom: 1px solid #eee;">R$ ${item.price.toFixed(2)}</td>
-      </tr>
-    `;
-  }).join('');
+const carrinhoAgrupado = {};
+
+carrinho.forEach(item => {
+  if (carrinhoAgrupado[item.name]) {
+    carrinhoAgrupado[item.name].quantity += 1;
+    carrinhoAgrupado[item.name].total += item.price;
+  } else {
+    carrinhoAgrupado[item.name] = {
+      name: item.name,
+      price: item.price,
+      quantity: 1,
+      total: item.price
+    };
+  }
+});
+
+const htmlCarrinho = Object.values(carrinhoAgrupado).map(item => {
+  total += item.total;
+  return `
+    <tr>
+      <td>${item.quantity}x ${item.name}</td>
+      <td>R$ ${item.total.toFixed(2)}</td>
+    </tr>
+  `;
+}).join('');
+
 
   const mailOptions = {
     from: process.env.MAIL_USER,
