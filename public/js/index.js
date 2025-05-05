@@ -1,9 +1,43 @@
+// formulário para a página contato
 const form = document.getElementById('contact-form');
+
 if (form) {
-  form.addEventListener('submit', function (e) {
+  form.addEventListener('submit', async function (e) {
     e.preventDefault();
-    alert('Mensagem enviada com sucesso!');
-    this.reset();
+
+    const nome = document.getElementById('nome').value;
+    const email = document.getElementById('email').value;
+    const mensagem = document.getElementById('mensagem').value;
+
+    const loadingModal = document.getElementById('loading-modal');
+    const loadingMessage = document.getElementById('modal-message');
+
+    if (!loadingModal || !loadingMessage) return;
+
+    loadingMessage.textContent = 'Enviando sua mensagem...';
+    loadingModal.classList.remove('hidden');
+
+    try {
+      const response = await fetch('/enviar-contato', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ nome, email, mensagem })
+      });
+
+      const data = await response.json();
+      loadingMessage.textContent = data.message || 'Mensagem enviada com sucesso!';
+      
+      setTimeout(() => {
+        loadingModal.classList.add('hidden');
+        form.reset();
+      }, 3000); 
+    } catch (error) {
+      console.error('Erro ao enviar mensagem:', error);
+      loadingMessage.textContent = 'Erro ao enviar sua mensagem. Tente novamente.';
+      setTimeout(() => {
+        loadingModal.classList.add('hidden');
+      }, 3000);
+    }
   });
 }
 
@@ -158,6 +192,7 @@ if (checkoutForm) {
     const email = document.getElementById('email').value;
     const endereco = document.getElementById('endereco').value;
     const pagamento = document.getElementById('pagamento').value;
+    const troco = document.getElementById('troco').value;
     const carrinho = JSON.parse(localStorage.getItem('cart')) || [];
 
     if (carrinho.length === 0) {
@@ -174,7 +209,7 @@ if (checkoutForm) {
       const response = await fetch('/finalizar-pedido', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ nome, email, endereco, pagamento, carrinho })
+        body: JSON.stringify({ nome, email, endereco, pagamento, troco, carrinho })
       });
 
       const data = await response.json();
@@ -221,4 +256,27 @@ if (limparBtn) {
   });
 }
 
+//campo troco se for dinheiro
+const pagamentoSelect = document.getElementById('pagamento');
+const trocoContainer = document.getElementById('troco-container');
 
+if (pagamentoSelect) {
+  pagamentoSelect.addEventListener('change', () => {
+    if (pagamentoSelect.value === 'dinheiro') {
+      trocoContainer.classList.remove('hidden-troco');
+    } else {
+      trocoContainer.classList.add('hidden-troco');
+    }
+  });
+}
+
+// hamburguer 
+  const menuToggle = document.querySelector('.menu-toggle');
+  const navMenu = document.querySelector('nav ul');
+  
+  if (menuToggle && navMenu) {
+    menuToggle.addEventListener('click', () => {
+      navMenu.classList.toggle('active');
+    });
+  }
+  

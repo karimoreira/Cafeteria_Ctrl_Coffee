@@ -4,15 +4,20 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Finalizar Pedido - Ctrl+Coffee</title>
+  <link rel="icon" href="img/favicon.png" type="image/png">
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body class="page-min-height">
   <header>
     <div class="container">
       <div class="logo">
-        <img src="img/coffee-icone.png" />
+        <img src="img/coffee-icone.png" alt="Ctrl+Coffee" />
       </div>
-      <nav>
+      <div class="mobile-icons">
+        <a href="carrinho.html" class="cart-icon">🛒 <span id="cart-count">0</span></a>
+        <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menu">☰</button>
+      </div>
+      <nav id="nav-menu">
         <ul>
           <li><a href="index.html">Home</a></li>
           <li><a href="menu.html">Menu</a></li>
@@ -40,13 +45,16 @@
           <select id="pagamento" name="pagamento" required>
             <option value="">Selecione</option>
             <option value="pix">PIX</option>
+            <option value="dinheiro">Dinheiro</option>
             <option value="cartao">Cartão de Crédito</option>
             <option value="boleto">Boleto</option>
           </select>
-
+          <div id="troco-container" class="hidden-troco">
+            <label for="troco">Precisa de troco?</label>
+            <input type="text" id="troco" name="troco" placeholder="Ex: R$ 5,00" />
+          </div>
           <button type="submit" class="default-btn">Confirmar Pedido</button>
         </form>
-
         <div class="checkout-summary">
           <h3>Resumo do Pedido</h3>
           <div id="checkout-items"></div>
@@ -57,9 +65,13 @@
   </main>
 
   <footer>
-    <p>&copy; 2025 Ctrl+Coffee. Todos os direitos reservados.</p>
+    <p>
+      &copy; 2025 Ctrl+Coffee. Todos os direitos reservados. Projeto idealizado e desenvolvido por 
+      <a href="https://www.linkedin.com/in/atiliomoreira/" target="_blank" rel="noopener noreferrer">
+        Kari Atílio Moreira
+      </a>
+    </p>
   </footer>
-
   <div id="loading-modal" class="modal hidden">
     <div class="modal-content">
       <p id="modal-message">Enviando seu pedido...</p>

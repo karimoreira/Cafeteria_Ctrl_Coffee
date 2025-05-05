@@ -11,9 +11,44 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
+
+// rota para o envio da mensagem do formulario de contato
+app.post('/enviar-contato', async (req, res) => {
+  const { nome, email, mensagem } = req.body;
+
+  const mailOptions = {
+    from: process.env.MAIL_USER,
+    to: process.env.EMAIL_TO,
+    subject: 'Nova Mensagem de Contato - Ctrl+Coffee',
+    html: `
+      <h2>📬 Nova Mensagem de Contato</h2>
+      <p><strong>Nome:</strong> ${nome}</p>
+      <p><strong>Email:</strong> ${email}</p>
+      <p><strong>Mensagem:</strong><br/>${mensagem.replace(/\n/g, '<br/>')}</p>
+    `
+  };
+
+  try {
+    const transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: process.env.MAIL_USER,
+        pass: process.env.MAIL_PASS
+      }
+    });
+
+    await transporter.sendMail(mailOptions);
+    res.status(200).json({ message: 'Mensagem enviada com sucesso!' });
+  } catch (error) {
+    console.error('Erro ao enviar mensagem:', error);
+    res.status(500).json({ message: 'Erro ao enviar a mensagem.' });
+  }
+});
+
+
 // rota finalizar pedido
 app.post('/finalizar-pedido', async (req, res) => {
-  const { nome, email, endereco, pagamento, carrinho } = req.body;
+  const { nome, email, endereco, pagamento, troco, carrinho } = req.body;
 
   let total = 0;
   const htmlCarrinho = carrinho.map(item => {
@@ -36,6 +71,7 @@ app.post('/finalizar-pedido', async (req, res) => {
       <p><strong>Email:</strong> ${email}</p>
       <p><strong>Endereço:</strong> ${endereco}</p>
       <p><strong>Forma de pagamento:</strong> ${pagamento}</p>
+      ${pagamento === 'dinheiro' && troco ? `<p><strong>Valor em troco para cliente:</strong> ${troco}</p>` : ''}
       <hr />
       <h3>Itens do Pedido:</h3>
       <table cellpadding="0" cellspacing="0" style="width: 100%; border-collapse: collapse; font-family: sans-serif;">
