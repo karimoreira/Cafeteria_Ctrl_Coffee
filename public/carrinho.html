@@ -4,13 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Seu Carrinho - Ctrl+Coffee</title>
-  <link rel="stylesheet" href="/ctrl-coffee/public/css/style.css" />
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body class="page-min-height">
   <header>
     <div class="container">
       <div class="logo">
-        <img src="/ctrl-coffee/public/img/coffee-icone.png" alt="Ctrl+Coffee" />
+        <img src="img/coffee-icone.png" alt="Ctrl+Coffee" />
       </div>
       <nav>
         <ul>
@@ -45,8 +45,8 @@
           <span><strong>Total</strong></span>
           <span id="total-price"><strong>R$ 0,00</strong></span>
         </div>
-        <button class="default-btn" onclick="window.location.href='finalizar.html'">Finalizar Compra</button>
-        <button class="default-btn" onclick="limparCarrinho()" style="margin-top: 10px; background: #d55;">Esvaziar Carrinho</button>
+        <button id="btn-finalizar" class="default-btn">Finalizar Compra</button>
+        <button id="btn-limpar" class="default-btn" style="margin-top: 10px; background: #d55;">Esvaziar Carrinho</button>           
       </div>
     </div>
   </section>
@@ -54,6 +54,13 @@
   <footer>
     <p>&copy; 2025 Ctrl+Coffee. Todos os direitos reservados.</p>
   </footer>
+
+  <div id="info-modal" class="modal hidden">
+    <div class="modal-content">
+      <p id="info-modal-message">Mensagem aqui</p>
+    </div>
+  </div>
+  
   <script src="js/index.js"></script>
 </body>
 </html>
