@@ -93,7 +93,6 @@ Acesse o projeto online em:
 
 - Defini as variáveis de cores globais utilizando CSS custom properties, pois idealizei desde o início que grande parte dos componentes teriam a mesma paleta de cores, então adicionei ao :root. Facilita a manutenção e dá uma aparência armonica
 
----
 
 ## Backend 
  
@@ -107,7 +106,7 @@ Acesse o projeto online em:
   - Retorna status de sucesso ou erro para o frontend
 - Rota POST /enviar-contato:
   - Recebe a mensagem e envia para o e-mail da loja
-    - Nodemailer
+  - Nodemailer
 - Variáveis sensíveis (e-mail e senha gerada para o app) via .env
 - Frontend exibe modais durante o processamento e responde ao status (sucesso ou erro)
 
@@ -116,7 +115,7 @@ Acesse o projeto online em:
 - Redirecionamento de /index para / para manter a URL da home limpa no Render sem /index.
 - Todasas páginas são servidas via express com o método .sendFile
 
----
+
 
 
 
