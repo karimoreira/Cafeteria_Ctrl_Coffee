@@ -7,7 +7,7 @@ Projeto completo de uma cafeteria fictícia, desenvolvido com foco em uma experi
 Acesse o projeto online em:  
 **[https://ctrl-coffee.onrender.com](https://ctrl-coffee.onrender.com)**
 
-## imagens do projeto versão mobile
+## imagens do projeto versão mobile e desktop
 
 <div align="center" style="display: flex; gap: 10px; justify-content: center;">
 
