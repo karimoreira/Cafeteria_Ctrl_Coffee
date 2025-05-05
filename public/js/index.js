@@ -44,11 +44,13 @@ if (form) {
 // contador do carrinho
 function updateCartCount() {
   const cart = JSON.parse(localStorage.getItem('cart')) || [];
-  const cartCountEl = document.getElementById('cart-count');
-  if (cartCountEl) {
-    cartCountEl.textContent = cart.length;
-  }
+  const cartCountElements = document.querySelectorAll('.cart-count');
+
+  cartCountElements.forEach(el => {
+    el.textContent = cart.length;
+  });
 }
+
 updateCartCount();
 
 
