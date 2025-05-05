@@ -307,7 +307,7 @@ if (checkoutForm) {
       modalMessage.textContent = data.message || 'Pedido enviado com sucesso!';
       setTimeout(() => {
         localStorage.removeItem('cart');
-        window.location.href = 'index.html';
+        window.location.href = '/index';
       }, 3000);
     } catch (error) {
       console.error('Erro ao enviar pedido:', error);
@@ -328,7 +328,7 @@ if (finalizarBtn) {
       showInfoModal('Não há itens no carrinho.');
       return;
     }
-    window.location.href = 'finalizar.html';
+    window.location.href = '/finalizar';
   });
 }
 

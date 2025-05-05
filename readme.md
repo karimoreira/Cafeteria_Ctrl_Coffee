@@ -2,6 +2,10 @@
 
 Projeto completo de uma cafeteria fictícia, desenvolvido com foco em uma experiência funcional e intuitiva. Inclui vitrine de cafés, carrinho de compras, formulário para solicitação do pedido, finalização de pedido por e-mail e um formulário para contato.
 
+## Deploy 
+
+Acesse o projeto online em:  
+**[https://ctrl-coffee.onrender.com](https://ctrl-coffee.onrender.com)**
 
 ## Tecnologias Utilizadas
 
@@ -106,6 +110,11 @@ Projeto completo de uma cafeteria fictícia, desenvolvido com foco em uma experi
     - Nodemailer
 - Variáveis sensíveis (e-mail e senha gerada para o app) via .env
 - Frontend exibe modais durante o processamento e responde ao status (sucesso ou erro)
+
+## Rotas amigáveis e redirec
+- Rotas configuradas no server.js para acessar páginas sem a extensão .html no render
+- Redirecionamento de /index para / para manter a URL da home limpa no Render sem /index.
+- Todasas páginas são servidas via express com o método .sendFile
 
 ---
 

@@ -10,7 +10,33 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
+app.get('/index', (req, res) => {
+  res.redirect('/');
+});
 
+app.get('/menu', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public/menu.html'));
+});
+
+app.get('/index', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public/index.html'));
+});
+
+app.get('/contato', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public/contato.html'));
+});
+
+app.get('/carrinho', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public/carrinho.html'));
+});
+
+app.get('/finalizar', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public/finalizar.html'));
+});
+
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public/index.html'));
+});
 
 // rota para o envio da mensagem do formulario de contato
 app.post('/enviar-contato', async (req, res) => {
