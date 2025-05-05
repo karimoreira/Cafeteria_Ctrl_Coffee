@@ -29,6 +29,18 @@ Projeto completo de uma cafeteria fictícia, desenvolvido com foco em uma experi
 
 ---
 
+### Página Menu
+
+- Todos os cafés da cafeteria
+- Cada item exibe:
+  - Título
+  - Descrição
+  - Imagem coerente com o nome
+  - Preço
+  - Botão Comprar
+
+---
+
 ### Responsividade
 
 - Abaixo de 620px:
@@ -65,8 +77,9 @@ Projeto completo de uma cafeteria fictícia, desenvolvido com foco em uma experi
 
 ---
 
-### Formulário de Contato 
+### Página Fale Conosco - Formulário de Contato 
 
+- Espaço para sugestões, dúvidas e pedidos especiais do cliente.
 - Formulário com campos:
   - Nome
   - E-mail
