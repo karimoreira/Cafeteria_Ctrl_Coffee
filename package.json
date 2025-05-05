@@ -1,22 +1,22 @@
 {
   "name": "ctrl-coffee",
   "version": "1.0.0",
-  "main": "index.js",
+  "description": "Aplicativo de pedidos de café com frontend e backend em Node.js",
+  "main": "server.js",
   "scripts": {
+    "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "author": "Kari Atílio Moreira",
+  "license": "ISC",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/karimoreira/Cafeteria_Ctrl_Coffee.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "bugs": {
     "url": "https://github.com/karimoreira/Cafeteria_Ctrl_Coffee/issues"
   },
   "homepage": "https://github.com/karimoreira/Cafeteria_Ctrl_Coffee#readme",
-  "description": "",
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^16.5.0",
