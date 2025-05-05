@@ -18,6 +18,8 @@ Acesse o projeto online em:
 
 ### versão desktop
 
+<div align="center">
+
 <img src="./imgsrepo/fronthome.png" alt="Página Home" width="600"/>
 
 <img src="./imgsrepo/frontmenu.png" alt="Página de Menu" width="600"/>
@@ -26,6 +28,7 @@ Acesse o projeto online em:
 
 <img src="./imgsrepo/frontcontato.png" alt="Página de Contato" width="600"/>
 
+</div>
 
 ## Tecnologias Utilizadas
 
