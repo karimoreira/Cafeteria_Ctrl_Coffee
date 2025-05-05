@@ -7,6 +7,26 @@ Projeto completo de uma cafeteria fictícia, desenvolvido com foco em uma experi
 Acesse o projeto online em:  
 **[https://ctrl-coffee.onrender.com](https://ctrl-coffee.onrender.com)**
 
+## imagens do projeto versão mobile
+
+<div align="center" style="display: flex; gap: 10px; justify-content: center;">
+
+  <img src="./imgsrepo/mobile.png" alt="Versão mobile 1" width="280"/>
+  <img src="./imgsrepo/mobilee.png" alt="Versão mobile 2" width="280"/>
+
+</div>
+
+### versão desktop
+
+<img src="./imgsrepo/fronthome.png" alt="Página Home" width="600"/>
+
+<img src="./imgsrepo/frontmenu.png" alt="Página de Menu" width="600"/>
+
+<img src="./imgsrepo/finalizarpedidofront.png" alt="Finalização do Pedido" width="600"/>
+
+<img src="./imgsrepo/frontcontato.png" alt="Página de Contato" width="600"/>
+
+
 ## Tecnologias Utilizadas
 
 - HTML5 
