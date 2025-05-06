@@ -552,14 +552,23 @@ body.page-min-height {
   display: none;
 }
 
-/* botão hamburguer */
+/*menu hamburguer*/
+
 .menu-toggle {
   display: none;
   background: none;
   border: none;
   font-size: 1.8rem;
   cursor: pointer;
+  color: #000;   
 }
+
+.menu-toggle:focus,
+.menu-toggle:active {
+  outline: none;
+  color: #000;         
+}
+
 
 /* Ícones extras no mobile (hambúrguer + carrinho) */
 .mobile-icons {
